@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="小刘同学的成长之路">
 <meta property="og:description" content="学会记录，时常反思，不断积累  前言 在工作中，遇到一个需求，需要监控研发人员每天提交的代码行数和代码bug数，关于代码的bug可以使用源码质量扫描工具sonar解决，但是对于svn每天提交的代码记录，哪种方式获取，对以后的数据筛选、存储、展示更有利，值得深思，后来，查阅资料，了解到了SVNKit 这个工具。 介绍 SVNKit (JavaSVN) 是一个纯 Java 的 SVN 客户端库,使用">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="https://imgchr.com/i/VdzAhT">
-<meta property="og:image" content="https://imgchr.com/i/VdzkNV">
-<meta property="og:updated_time" content="2019-06-06T16:28:44.169Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/07/VdzAhT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/07/VdzkNV.png">
+<meta property="og:updated_time" content="2019-06-06T16:37:18.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVNKit --记一次获取SVN提交信息的经历">
 <meta name="twitter:description" content="学会记录，时常反思，不断积累  前言 在工作中，遇到一个需求，需要监控研发人员每天提交的代码行数和代码bug数，关于代码的bug可以使用源码质量扫描工具sonar解决，但是对于svn每天提交的代码记录，哪种方式获取，对以后的数据筛选、存储、展示更有利，值得深思，后来，查阅资料，了解到了SVNKit 这个工具。 介绍 SVNKit (JavaSVN) 是一个纯 Java 的 SVN 客户端库,使用">
-<meta name="twitter:image" content="https://imgchr.com/i/VdzAhT">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/06/07/VdzAhT.png">
   
     <link rel="alternate" href="/atom.xml" title="小刘同学的成长之路" type="application/atom+xml">
   
@@ -107,8 +107,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- https://mvnrepository.com/artifact/org.tmatesoft.svnkit/svnkit --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.tmatesoft.svnkit&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;svnkit&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.8.14&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>运行示例</strong></p>
-<p><img src="https://imgchr.com/i/VdzAhT" alt="统计代码总提交行数.png"></p>
-<p><img src="https://imgchr.com/i/VdzkNV" alt="每次的提交信息.png"></p>
+<p><img src="https://s2.ax1x.com/2019/06/07/VdzAhT.png" alt="统计代码总提交行数.png"></p>
+<p><img src="https://s2.ax1x.com/2019/06/07/VdzkNV.png" alt="每次的提交信息.png"></p>
 <p><strong>获取固定时间段内的提交记录，例如文件路径</strong></p>
 <p>说明：SVNLogEntry 这个实体类，保存了获取到的所有svn提交日志信息，包含，提交的文件，版本号，提交注释，提交人等，可以对SVNLogEntry进行过滤处理，然后对数据进行存储，用于展示。完整源码参考如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">import org.tmatesoft.svn.core.ISVNLogEntryHandler;</span><br><span class="line">import org.tmatesoft.svn.core.SVNException;</span><br><span class="line">import org.tmatesoft.svn.core.SVNLogEntry;</span><br><span class="line">import org.tmatesoft.svn.core.SVNURL;</span><br><span class="line">import org.tmatesoft.svn.core.auth.ISVNAuthenticationManager;</span><br><span class="line">import org.tmatesoft.svn.core.internal.io.dav.DAVRepositoryFactory;</span><br><span class="line">import org.tmatesoft.svn.core.internal.io.fs.FSRepositoryFactory;</span><br><span class="line">import org.tmatesoft.svn.core.internal.io.svn.SVNRepositoryFactoryImpl;</span><br><span class="line">import org.tmatesoft.svn.core.io.SVNRepository;</span><br><span class="line">import org.tmatesoft.svn.core.io.SVNRepositoryFactory;</span><br><span class="line">import org.tmatesoft.svn.core.wc.SVNWCUtil;</span><br><span class="line"></span><br><span class="line">public class ModerOption &#123;</span><br><span class="line"></span><br><span class="line">  //svn地址</span><br><span class="line">	private static String url = &quot;http://xxxx:xxx/svn/project/anka/trunk/Anka&quot;;  </span><br><span class="line">    private static SVNRepository repository = null;  </span><br><span class="line"> </span><br><span class="line">  </span><br><span class="line">    public void filterCommitHistory() throws Exception &#123;</span><br><span class="line">    	DAVRepositoryFactory.setup();  </span><br><span class="line">        SVNRepositoryFactoryImpl.setup();  </span><br><span class="line">        FSRepositoryFactory.setup();  </span><br><span class="line">        try &#123;  </span><br><span class="line">            repository = SVNRepositoryFactory.create(SVNURL.parseURIEncoded(url));  </span><br><span class="line">        &#125;  </span><br><span class="line">        catch (SVNException e) &#123;  </span><br><span class="line">           e.printStackTrace(); </span><br><span class="line">        &#125;  </span><br><span class="line">        // 身份验证  </span><br><span class="line">        ISVNAuthenticationManager authManager = SVNWCUtil.createDefaultAuthenticationManager(&quot;svn用户名&quot;,&quot;svn密码&quot;);  </span><br><span class="line">        repository.setAuthenticationManager(authManager);  </span><br><span class="line">    	</span><br><span class="line">    	</span><br><span class="line">        // 过滤条件  </span><br><span class="line">        final SimpleDateFormat format = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);  </span><br><span class="line">        final Date begin = format.parse(&quot;2019-04-13&quot;);  </span><br><span class="line">        final Date end = format.parse(&quot;2019-05-14&quot;);  </span><br><span class="line">        final String author = &quot;&quot;;  //过滤提交人</span><br><span class="line">        long startRevision = 0;  </span><br><span class="line">        long endRevision = -1;//表示最后一个版本  </span><br><span class="line">        final List&lt;String&gt; history = new ArrayList&lt;String&gt;();  </span><br><span class="line">        //String[] 为过滤的文件路径前缀，为空表示不进行过滤  </span><br><span class="line">        repository.log(new String[]&#123;&quot;&quot;&#125;,  </span><br><span class="line">                       startRevision,  </span><br><span class="line">                       endRevision,  </span><br><span class="line">                       true,  </span><br><span class="line">                       true,  </span><br><span class="line">                       new ISVNLogEntryHandler() &#123;  </span><br><span class="line">                           @Override  </span><br><span class="line">                           public void handleLogEntry(SVNLogEntry svnlogentry)  </span><br><span class="line">                                   throws SVNException &#123;  </span><br><span class="line">                                  //依据提交时间进行过滤  </span><br><span class="line">                               if (svnlogentry.getDate().after(begin)  </span><br><span class="line">                                   &amp;&amp; svnlogentry.getDate().before(end)) &#123;  </span><br><span class="line">                                   // 依据提交人过滤  </span><br><span class="line">                                   if (!&quot;&quot;.equals(author)) &#123;  </span><br><span class="line">                                       if (author.equals(svnlogentry.getAuthor())) &#123;  </span><br><span class="line">                                           fillResult(svnlogentry);  </span><br><span class="line">                                       &#125;  </span><br><span class="line">                                   &#125; else &#123;  </span><br><span class="line">                                       fillResult(svnlogentry);  </span><br><span class="line">                                   &#125;  </span><br><span class="line">                               &#125;  </span><br><span class="line">                           &#125;  </span><br><span class="line">  </span><br><span class="line">                           public void fillResult(SVNLogEntry svnlogentry) &#123;  </span><br><span class="line">                               //getChangedPaths为提交的历史记录MAP key为文件名，value为文件详情  </span><br><span class="line">                               history.addAll(svnlogentry.getChangedPaths().keySet());  </span><br><span class="line">                           &#125;  </span><br><span class="line">                       &#125;);  </span><br><span class="line">        for (String path : history) &#123;  </span><br><span class="line">            System.out.println(path);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    </span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">    	ModerOption test = new ModerOption();</span><br><span class="line">    	test.filterCommitHistory();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -125,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://weiqiangliu.github.io/2019/06/06/SVNKit-记一次获取SVN提交信息的经历/" data-id="cjwkvr0tn00006lp9qacgr3pe" class="article-share-link">Share</a>
+      <a data-url="http://weiqiangliu.github.io/2019/06/06/SVNKit-记一次获取SVN提交信息的经历/" data-id="cjwkvx5ji00009dp931gnxrnw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,15 +134,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/06/07/宁波市象山县松兰山-记一次海滩之旅/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          宁波市象山县松兰山-记一次海滩之旅
-        
-      </div>
-    </a>
   
+    <a href="/2019/06/06/宁波市象山县松兰山-记一次海滩之旅/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">宁波市象山县松兰山-记一次海滩之旅</div>
+    </a>
   
 </nav>
 
@@ -178,11 +174,11 @@
       <ul>
         
           <li>
-            <a href="/2019/06/07/宁波市象山县松兰山-记一次海滩之旅/">宁波市象山县松兰山-记一次海滩之旅</a>
+            <a href="/2019/06/06/SVNKit-记一次获取SVN提交信息的经历/">SVNKit --记一次获取SVN提交信息的经历</a>
           </li>
         
           <li>
-            <a href="/2019/06/06/SVNKit-记一次获取SVN提交信息的经历/">SVNKit --记一次获取SVN提交信息的经历</a>
+            <a href="/2019/06/06/宁波市象山县松兰山-记一次海滩之旅/">宁波市象山县松兰山-记一次海滩之旅</a>
           </li>
         
       </ul>
